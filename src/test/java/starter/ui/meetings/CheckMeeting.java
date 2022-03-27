@@ -9,16 +9,18 @@ import org.openqa.selenium.By;
 public class CheckMeeting implements Question<String> {
 
     private String nameBusiness;
+    private String typeMeeting;
 
-    public CheckMeeting(String nameBusiness) {
+    public CheckMeeting(String nameBusiness, String typeMeeting) {
         this.nameBusiness = nameBusiness;
+        this.typeMeeting = typeMeeting;
     }
 
-    public static Question<String> isCreated(String nameBusiness) {
-        return new CheckMeeting(nameBusiness);
+    public static Question<String> isCreated(String nameBusiness,String typeMeeting) {
+        return new CheckMeeting(nameBusiness,typeMeeting);
     }
     public By meetingCreated(String nBusiness){
-        By path = By.xpath("//div[@class='slick-cell l1 r1']/a[text()='Daily Meeting "+nBusiness+"']");
+        By path = By.xpath("//div[@class='slick-cell l1 r1']/a[text()='"+typeMeeting+" "+nBusiness+"']");
         return path;
     }
     @Override
