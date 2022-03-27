@@ -7,9 +7,6 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Scroll;
 import org.openqa.selenium.By;
 
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
-
-
 public class CheckBusiness implements Question<String> {
 
     private String nameBusiness;
@@ -31,9 +28,8 @@ public class CheckBusiness implements Question<String> {
         actor.attemptsTo(
                 Scroll.to(BusinessOverview.DOWN),
                 Click.on(BusinessOverview.REFRESH_BUTTON)
-
         );
-        String hola = BrowseTheWeb.as(actor).find(target).getText();
-        return "TenZ";
+        String result = BrowseTheWeb.as(actor).find(target).getText();
+        return result;
     }
 }

@@ -1,13 +1,16 @@
 package starter.stepdefinitions;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
+import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import org.hamcrest.Matchers;
 import starter.ui.meetings.Add;
+import starter.ui.meetings.CheckMeeting;
 import starter.ui.meetings.DoMeeting;
 import starter.ui.meetings.Save;
-
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class CreateMeetingStepDefinitions {
@@ -26,6 +29,13 @@ public class CreateMeetingStepDefinitions {
                 DoMeeting.forA(nameBusiness),
                 Add.theAttendees(),
                 Save.theMeeting()
+        );
+    }
+    @Then("he finds his meeting created")
+    public void he_finds_his_meeting_created() {
+        String nameMeeting = "Daily Meeting "+nameBusiness;
+        theActorInTheSpotlight().should(
+                seeThat("Meeting created", CheckMeeting.isCreated(nameBusiness), Matchers.equalTo(nameMeeting))
         );
     }
 }

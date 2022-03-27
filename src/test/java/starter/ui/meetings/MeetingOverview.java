@@ -7,6 +7,7 @@ public class MeetingOverview {
     //Buttons
     public static By NEW_MEETING_BUTTON = By.xpath("//div[@class='tool-button add-button icon-tool-button']/div/span");
     public static By SAVE_BUTTON = By.xpath("//div[@class='tool-button save-and-close-button icon-tool-button']/div/span");
+    public static By REFRESH_BUTTON = By.xpath("//div[@title='Refresh']");
     //Meeting Form
     public static By DROPDOWN_BOX = By.xpath("//div[@id='select2-drop']/div/input");
 
